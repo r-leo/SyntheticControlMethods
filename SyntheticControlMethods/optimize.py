@@ -100,7 +100,7 @@ class Optimize(object):
                 bnds = tuple((0,20) if ((pen=="auto") and (x==data.n_covariates)) else (0,1) for x in range(data.n_covariates + 1))
 
             #Optimze
-            res = minimize(self.total_loss, v_0,  args=(args),
+            res = minimize(self.total_loss.flatten(), v_0,  args=(args),
                             method='L-BFGS-B', bounds=bnds, 
                             options={'gtol': 1e-8,'disp':3, 'iprint':3})
             
